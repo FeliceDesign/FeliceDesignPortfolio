@@ -1,0 +1,34 @@
+.threed-all {
+    height: auto;
+    overflow: visible;
+}
+
+.threed-all .content {
+    height: auto;
+    overflow: visible;
+    padding-top: 0;
+}
+
+.threed-all .photo-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    align-items: flex-start;
+    padding: 3vw;
+}
+
+.threed-all .photo-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.threed-all .photo-col img,
+.threed-all .photo-col video {
+    width: 100%;
+    display: block;
+    border: 10px solid var(--frameColorLight);
+    box-sizing: border-box;
+    box-shadow: 8px 12px 20px rgba(0, 0, 0, 0.4);
+}

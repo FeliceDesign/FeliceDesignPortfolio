@@ -173,6 +173,19 @@
 }
 
 
+.categorylink {
+    display: contents;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo {
+    display: block;
+    height: 100%;
+    width: auto;
+    text-decoration: none;
+}
+
 .bottombar{
     height: 5vh;
     display: flex;
