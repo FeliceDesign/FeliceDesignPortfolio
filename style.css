@@ -4,7 +4,8 @@
 }
 
 :root{
-    --wallColorLight: rgb(219, 219, 219);
+    --wallColorLight: rgb(231, 231, 231);
+    --wallColor2Light: rgb(155, 155, 155);
     --wallColorDark: rgb(49, 49, 49);
     --frameColorLight: rgb(51, 51, 51);
     --frameColorDark: rgb(80, 80, 80);
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    background: linear-gradient(to bottom right, var(--wallColorLight), var(--wallColor2Light));
 }
 
 .topbar{
@@ -30,7 +32,6 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    background-color: var(--wallColorLight);
     padding: 1%;
 }
 
@@ -49,7 +50,7 @@
     flex-grow: 1;
     display: flex;
     overflow: hidden;
-    background-color: var(--wallColorLight);
+    padding-top: 5vh;
 }
 
 .scrollableList{
@@ -59,8 +60,7 @@
     height: 100%;
     width: 100%;
     flex-shrink: 0;
-    background-color: var(--wallColorLight);
-    gap: 3vw;
+    gap: 0vw;
     /* Hide scrollbar but keep functionality */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none;  /* IE/Edge */
@@ -73,13 +73,18 @@
 }
 
 .categorycontainer{
-    width: 50vw;
     flex-shrink: 0;
     flex-grow: 0;
     height: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    margin-right: 5vw;
 }
+
+.photographycontainer { width: 40vw; }   /* 50vw × 0.8 */
+.threedcontainer      { width: 32vw; }   /* 40vw × 0.8 */
+.uicontainer          { width: 32vw; }   /* 40vw × 0.8 */
+.codingcontainer      { width: 25.6vw; } /* 32vw × 0.8 */
 
 .photographycategory{
     position: absolute;
@@ -88,43 +93,54 @@
     width: 50vw;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 5vh;
+    transform: scale(0.8);
+    transform-origin: top left;
 }
 
 .threedcategory{
     position: absolute;
     top: 10vh;
-    left: 8vw;
+    left: 0vw;
     width: 40vw;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 5vh;
+    transform: scale(0.8);
+    transform-origin: top left;
 }
 
 .uicategory{
     position: absolute;
     top: 10vh;
-    left: 3vw;
+    left: 0vw;
     width: 40vw;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 5vh;
+    transform: scale(0.8);
+    transform-origin: top left;
 }
 
 .codingcategory{
     position: absolute;
     top: 25vh;
-    left: 6vw;
+    left: 0vw;
     width: 32vw;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 5vh;
+    transform: scale(0.8);
+    transform-origin: top left;
+    
 }
 
 .categorypicturecontainer{
     overflow: hidden;
     border: 15px solid var(--frameColorLight);
     box-sizing: border-box;
+    box-shadow: 12px 25px 30px 1px rgba(0, 0, 0, 0.5);
+    
 }
 
 .photographycategory .categorypicturecontainer {
@@ -140,6 +156,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    
 }
 
 .categoryplaquecontainer{
@@ -152,6 +169,7 @@
     align-items: center;
     font-size: 2rem;
     color: rgb(187, 187, 187);
+    box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -160,7 +178,6 @@
     display: flex;
     flex-direction: row;
     flex-shrink: 0;
-    background-color: var(--wallColorLight);
     align-items: center;
     justify-content: center;
     color: rgb(124, 124, 118);
