@@ -112,9 +112,9 @@
 
 .uicategory{
     position: absolute;
-    top: 10vh;
+    top: 0vh;
     left: 0vw;
-    width: 40vw;
+    width: 25vw;
     display: flex;
     flex-direction: column;
     gap: 5vh;
