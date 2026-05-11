@@ -1,0 +1,47 @@
+.aboutme-content {
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 10vw;
+  padding-top: 0 !important;
+}
+
+.aboutme-photo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.aboutme-photo img {
+  display: block;
+  height: 80vh;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom left;
+}
+
+.aboutme-text {
+  font-family: "Bona Nova", serif;
+  max-width: 48vw;
+  padding: 8vh 0vw;
+  color: rgb(0, 0, 0);
+  position: relative;
+  z-index: 1;
+  align-self: flex-start;
+}
+
+.aboutme-text h1 {
+  font-family: "Bona Nova", serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 2.5vh;
+}
+
+.aboutme-text p {
+  margin-top: 5vh;
+  font-family: "Bona Nova", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
