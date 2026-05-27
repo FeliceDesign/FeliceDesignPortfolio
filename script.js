@@ -31,6 +31,7 @@ if (document.querySelector(".photography-all, .threed-all")) {
   window.addEventListener(
     "wheel",
     (e) => {
+      if (document.body.classList.contains("media-overlay-open")) return;
       e.preventDefault();
       targetY += e.deltaY;
       targetY = Math.max(0, Math.min(targetY, document.body.scrollHeight - window.innerHeight));
@@ -39,10 +40,71 @@ if (document.querySelector(".photography-all, .threed-all")) {
   );
 
   function animatePhoto() {
-    currentY += (targetY - currentY) * 0.1;
-    window.scrollTo(0, currentY);
+    if (document.body.classList.contains("media-overlay-open")) {
+      currentY = window.scrollY;
+      targetY = window.scrollY;
+    } else {
+      currentY += (targetY - currentY) * 0.1;
+      window.scrollTo(0, currentY);
+    }
     requestAnimationFrame(animatePhoto);
   }
 
   animatePhoto();
+
+  const overlay = document.createElement("div");
+  overlay.className = "media-overlay";
+  overlay.innerHTML = `
+    <button class="media-overlay-close" aria-label="Close">&times;</button>
+    <div class="media-overlay-inner">
+      <div class="media-overlay-media"></div>
+      <div class="media-overlay-caption">Description placeholder</div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const mediaSlot = overlay.querySelector(".media-overlay-media");
+  const closeBtn = overlay.querySelector(".media-overlay-close");
+
+  function openOverlay(srcEl) {
+    mediaSlot.innerHTML = "";
+    let node;
+    if (srcEl.tagName === "VIDEO") {
+      node = document.createElement("video");
+      node.src = srcEl.getAttribute("src");
+      node.autoplay = true;
+      node.loop = true;
+      node.muted = true;
+      node.playsInline = true;
+      node.controls = true;
+    } else {
+      node = document.createElement("img");
+      node.src = srcEl.getAttribute("src");
+      node.alt = srcEl.getAttribute("alt") || "";
+    }
+    mediaSlot.appendChild(node);
+    overlay.classList.add("open");
+    document.body.classList.add("media-overlay-open");
+  }
+
+  function closeOverlay() {
+    overlay.classList.remove("open");
+    document.body.classList.remove("media-overlay-open");
+    mediaSlot.innerHTML = "";
+  }
+
+  document.querySelectorAll(".photo-col img, .photo-col video").forEach((el) => {
+    el.style.cursor = "zoom-in";
+    el.addEventListener("click", () => openOverlay(el));
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("media-overlay-inner")) {
+      closeOverlay();
+    }
+  });
+  closeBtn.addEventListener("click", closeOverlay);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeOverlay();
+  });
 }
