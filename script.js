@@ -1,3 +1,14 @@
+const langToggle = document.getElementById("langToggle");
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    const isDE = langToggle.textContent === "DE";
+    document.querySelectorAll(".aboutme-lang").forEach((el) => {
+      el.hidden = el.getAttribute("lang") === (isDE ? "en" : "de");
+    });
+    langToggle.textContent = isDE ? "EN" : "DE";
+  });
+}
+
 const list = document.querySelector(".scrollableList");
 
 if (list) {
@@ -64,6 +75,7 @@ if (document.querySelector(".photography-all, .threed-all")) {
   document.body.appendChild(overlay);
 
   const mediaSlot = overlay.querySelector(".media-overlay-media");
+  const captionEl = overlay.querySelector(".media-overlay-caption");
   const closeBtn = overlay.querySelector(".media-overlay-close");
 
   function openOverlay(srcEl) {
@@ -83,6 +95,9 @@ if (document.querySelector(".photography-all, .threed-all")) {
       node.alt = srcEl.getAttribute("alt") || "";
     }
     mediaSlot.appendChild(node);
+    const desc = srcEl.dataset.description || "";
+    captionEl.textContent = desc;
+    captionEl.style.display = desc ? "" : "none";
     overlay.classList.add("open");
     document.body.classList.add("media-overlay-open");
   }

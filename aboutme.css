@@ -23,12 +23,35 @@
 
 .aboutme-text {
   font-family: "Bona Nova", serif;
-  max-width: 48vw;
+  width: 48vw;
   padding: 8vh 0vw;
   color: rgb(0, 0, 0);
   position: relative;
   z-index: 1;
   align-self: flex-start;
+}
+
+.aboutme-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+}
+
+.lang-toggle {
+  font-family: "Bona Nova", serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  background: none;
+  border: 1px solid currentColor;
+  color: inherit;
+  padding: 0.2em 0.55em;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.lang-toggle:hover {
+  opacity: 1;
 }
 
 .aboutme-text h1 {
